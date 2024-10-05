@@ -2,7 +2,7 @@ errors = {
     "TitleNotExistError": "Тайтла не существует!"
 }
 
-const token = "Token " + document.cookie.match(new RegExp("; token=([0-z]+[^; ])"))[1];
+const token = "Token " + document.cookie.match(new RegExp("; |token=([0-z]+[^; ])"))[1];
 const id = window.location.pathname.split("/").reverse().filter(a => a)[0];
 
 async function onLoad(){

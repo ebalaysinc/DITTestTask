@@ -1,11 +1,9 @@
-const token = "Token " + document.cookie.match(new RegExp("; token=([0-z]+[^; ])"))[1];
+const token = "Token " + document.cookie.match(new RegExp("; |token=([0-z]+[^; ])"))[1];
 
 async function onLoad(){
     var form = document.getElementById("modalForm");
     function handleForm(event) { event.preventDefault(); } 
     form.addEventListener('submit', handleForm);
-
-    const regexToken = new RegExp("; token=([0-z]+[^; ])");
 
     response = await fetch('/api/getAllTitles/', {
         method: 'POST',
