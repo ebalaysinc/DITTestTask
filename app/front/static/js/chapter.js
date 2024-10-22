@@ -2,7 +2,9 @@ errors = {
     "TitleNotExistError": "Тайтла не существует!"
 }
 
-const token = "Token " + document.cookie.match(new RegExp("; |token=([0-z]+[^; ])"))[1];
+var reg = new RegExp(String.raw`; |\btoken=([0-z]+[^; ])`, 'g')
+const token = "Token " + [...document.cookie.matchAll(reg)].reverse()[0][1]
+
 const id = window.location.pathname.split("/").reverse().filter(a => a)[0];
 let workersCache = {};
 

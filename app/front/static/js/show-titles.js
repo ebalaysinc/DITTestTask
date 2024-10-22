@@ -1,4 +1,5 @@
-const token = "Token " + document.cookie.match(new RegExp("; |token=([0-z]+[^; ])"))[1];
+var reg = new RegExp(String.raw`; |\btoken=([0-z]+[^; ])`, 'g')
+const token = "Token " + [...document.cookie.matchAll(reg)].reverse()[0][1]
 
 async function onLoad(){
     var form = document.getElementById("modalForm");
